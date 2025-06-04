@@ -13,12 +13,8 @@ export const ThemeProvider = ({ children }) => {
    * Initialize theme from localStorage or system preference
    */
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme')
-    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-    const initialTheme = savedTheme || systemTheme
-    
+    const initialTheme = 'light'
     setTheme(initialTheme)
-    applyTheme(initialTheme)
   }, [])
 
   /**
@@ -27,18 +23,15 @@ export const ThemeProvider = ({ children }) => {
    */
   const applyTheme = (newTheme) => {
     const root = document.documentElement
-    root.classList.remove('light', 'dark')
-    root.classList.add(newTheme)
+    root.classList.remove('light')
+    root.classList.add('light')
   }
 
   /**
    * Toggle between light and dark themes
    */
   const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light'
-    setTheme(newTheme)
-    localStorage.setItem('theme', newTheme)
-    applyTheme(newTheme)
+    // Disabled toggleTheme to always keep light mode
   }
 
   /**
@@ -46,16 +39,14 @@ export const ThemeProvider = ({ children }) => {
    * @param {string} newTheme - Theme to set
    */
   const setThemeMode = (newTheme) => {
-    setTheme(newTheme)
-    localStorage.setItem('theme', newTheme)
-    applyTheme(newTheme)
+    const forcedTheme = 'light'
+    setTheme(forcedTheme)
   }
 
   const value = {
     theme,
     toggleTheme,
     setTheme: setThemeMode,
-    isDark: theme === 'dark'
   }
 
   return (

@@ -576,9 +576,6 @@ const EventManagementApp = () => {
           <div className="text-8xl mb-6">🎪</div>
           <h3 className="text-2xl font-bold text-gray-900 mb-3">No events found</h3>
           <p className="text-gray-600 text-lg mb-8">Try adjusting your search or filters</p>
-          <Button variant="primary" icon={<Plus className="w-4 h-4" />}>
-            Create New Event
-          </Button>
         </div>
       )}
     </div>

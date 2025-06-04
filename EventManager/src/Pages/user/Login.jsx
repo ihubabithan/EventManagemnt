@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../..
 import Button from '../../../components/Button'
 import { useAuth } from '../../../contexts/AuthContext'
 import toast from 'react-hot-toast'
+import Input from '../../../components/Input'
 
 // Validation Schema
 const LoginSchema = Yup.object().shape({
@@ -25,7 +26,7 @@ const LoginSchema = Yup.object().shape({
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false)
   const [loading, setLoading] = useState(false)
-  
+
   const { login } = useAuth()
   const navigate = useNavigate()
 
@@ -34,10 +35,10 @@ const LoginPage = () => {
    */
   const handleSubmit = async (values, { setSubmitting, setFieldError }) => {
     setLoading(true)
-    
+
     try {
       const result = await login(values.email, values.password)
-      
+
       if (result.success) {
         toast.success('Login successful!')
         navigate('/')
@@ -82,7 +83,7 @@ const LoginPage = () => {
               Enter your credentials to access your account
             </CardDescription>
           </CardHeader>
-          
+
           <CardContent>
             <Formik
               initialValues={{
@@ -95,25 +96,17 @@ const LoginPage = () => {
               {({ isSubmitting, errors, touched }) => (
                 <Form className="space-y-4">
                   {/* Email Field */}
+                  {/* Email Field */}
                   <div className="relative">
                     <label htmlFor="email" className="block text-sm font-medium mb-2">
                       Email Address
                     </label>
                     <Mail className="absolute left-3 top-[42px] h-4 w-4 text-muted-foreground" />
-                    <Field
+                    <Input
                       name="email"
                       type="email"
                       placeholder="Enter your email"
-                      className={`w-full pl-10 pr-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent ${
-                        errors.email && touched.email 
-                          ? 'border-red-500' 
-                          : 'border-gray-300'
-                      }`}
-                    />
-                    <ErrorMessage 
-                      name="email" 
-                      component="div" 
-                      className="text-red-500 text-sm mt-1" 
+                      className="w-full pl-10 pr-3 py-2 border rounded-md"
                     />
                   </div>
 
@@ -123,34 +116,19 @@ const LoginPage = () => {
                       Password
                     </label>
                     <Lock className="absolute left-3 top-[42px] h-4 w-4 text-muted-foreground" />
-                    <Field
+                    <Input
                       name="password"
-                      type={showPassword ? 'text' : 'password'}
+                      type="password"
                       placeholder="Enter your password"
-                      className={`w-full pl-10 pr-10 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent ${
-                        errors.password && touched.password 
-                          ? 'border-red-500' 
-                          : 'border-gray-300'
-                      }`}
-                    />
-                    <button
-                      type="button"
-                      onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-3 top-[42px] text-muted-foreground hover:text-foreground"
-                    >
-                      {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-                    </button>
-                    <ErrorMessage 
-                      name="password" 
-                      component="div" 
-                      className="text-red-500 text-sm mt-1" 
+                      className="w-full pl-10 pr-10 py-2 border rounded-md"
                     />
                   </div>
 
+
                   {/* Forgot Password Link */}
                   <div className="flex justify-end">
-                    <Link 
-                      to="/forgot-password" 
+                    <Link
+                      to="/forgot-password"
                       className="text-sm text-primary hover:underline"
                     >
                       Forgot your password?

@@ -1,13 +1,11 @@
 import React from 'react'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
-import { Calendar, LogOut, Moon, Sun, User } from 'lucide-react'
+import { Calendar, LogOut, User } from 'lucide-react'
 import { useAuth } from '../../contexts/AuthContext'
-import { useTheme } from '../../contexts/ThemeContext'
 import Button from '../../components/Button'
 
 const Layout = ({ children }) => {
   const { user, isAuthenticated, logout } = useAuth()
-  const { theme, toggleTheme } = useTheme()
   const navigate = useNavigate()
   const location = useLocation()
 
@@ -70,17 +68,6 @@ const Layout = ({ children }) => {
 
             {/* Right Side */}
             <div className="flex items-center gap-2">
-              {/* Theme Toggle */}
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={toggleTheme}
-                aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-                className="hover:bg-muted rounded-full transition-colors"
-              >
-                {theme === 'light' ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
-              </Button>
-
               {/* Auth Actions */}
               {isAuthenticated ? (
                 <div className="flex items-center gap-2">
