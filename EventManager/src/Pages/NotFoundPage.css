@@ -1,0 +1,95 @@
+.not-found-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 20px;
+}
+
+.not-found-content {
+  text-align: center;
+  background: white;
+  padding: 3rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  width: 100%;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.error-code {
+  font-size: 8rem;
+  margin: 0;
+  background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  line-height: 1;
+  animation: scaleIn 0.5s ease-out;
+}
+
+.error-divider {
+  height: 4px;
+  width: 60px;
+  background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+  margin: 20px auto;
+  border-radius: 2px;
+}
+
+.error-message {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin: 1rem 0;
+  font-weight: 600;
+}
+
+.error-description {
+  color: #666;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 1.5rem 0;
+}
+
+.back-home-button {
+  background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  margin-top: 1rem;
+}
+
+.back-home-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.back-home-button:active {
+  transform: translateY(0);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+} 
